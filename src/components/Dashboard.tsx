@@ -50,7 +50,7 @@ const Dashboard: React.FC = () => {
     let reconnectAttempts = 0;
 
     const connectWebSocket = () => {
-      const backendUrl = process.env.VITE_BACKEND_URL || 'https://crypto-trading-platform-backend.onrender.com';
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://crypto-trading-platform-backend.onrender.com';
       const wsUrl = backendUrl.replace('https', 'wss').replace('http', 'ws');
       wsRef.current = new WebSocket(wsUrl);
 

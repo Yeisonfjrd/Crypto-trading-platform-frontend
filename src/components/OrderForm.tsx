@@ -24,7 +24,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ onOrderCreated }) => {
   const { getToken } = useAuth();
 
   useEffect(() => {
-    const backendUrl = process.env.VITE_BACKEND_URL || 'https://crypto-trading-platform-backend.onrender.com';
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://crypto-trading-platform-backend.onrender.com';
     const wsUrl = backendUrl.replace('https', 'wss').replace('http', 'ws');
     const ws = new WebSocket(wsUrl);
 
@@ -49,7 +49,6 @@ const OrderForm: React.FC<OrderFormProps> = ({ onOrderCreated }) => {
     e.preventDefault();
     setError(null);
 
-    console.log('VITE_BACKEND_URL in OrderForm:', process.env.VITE_BACKEND_URL);
 
     try {
       const token = await getToken();
